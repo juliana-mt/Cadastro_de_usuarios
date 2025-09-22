@@ -1,13 +1,12 @@
 <?php
 Class UserSystem 
 {
-    public $user;
-    public $users= [];
+    private $users= [];
 
 
     public function __construct()
     {
-        $this->user = [
+        $this->users = [
             ['id' => 1, 
             'name' => 'João Silva', 
             'email' => 'Joao@email.com', 
@@ -26,14 +25,29 @@ Class UserSystem
         ];
     }
 
-     public function validateUser(string $email): ?array
-    {
-        foreach ($this->users as $u) {
-            if ($u['email'] === $email) {
-                return $u;
+     private function isEmailValid(string $email): bool
+     {
+        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+
+     }
+
+     private function isPasswordStrong(string $password): bool
+     {
+        return strlen($password) >= 8
+        && preg_match('/[A-Z]/', $password)
+        && preg_match('/[0-9]/', $password);
+     }
+
+     private function findUserByEmail(string $email): ?array
+     {
+        foreach ($this-> users as $user ) {
+            if ($user['email'] === $email) {
+                return $user;
             }
         }
+
         return null;
-    }
+
+     }
 }
 ?>
