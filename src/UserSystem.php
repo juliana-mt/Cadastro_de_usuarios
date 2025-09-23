@@ -58,7 +58,7 @@ Class UserSystem
         }
 
         if (!$this->isPasswordStrong($password)) {
-            return 'Senha fraca.<br>A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula e 1 número';
+            return 'Senha fraca. A senha deve conter no mínimo 8 caracteres, pelo menos 1 letra maiúscula e 1 número';
         }
 
         if ($this->findUserByEmail($email)) {

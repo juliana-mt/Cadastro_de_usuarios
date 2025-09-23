@@ -1,45 +1,42 @@
 <?php
 
-require_once __DIR__ . '/UserSystem.php';
-
+require_once __DIR__ . '/src/UserSystem.php';
 $system = new UserSystem();
 
-echo "-------- CASOS DE TESTE PRD --------\n";
+echo "<h1>-------- CASOS DE TESTE --------</h1><br>";
 
-echo "Caso 1 - Cadastro válido: ";
+echo "<strong>Caso 1 - </strong>Cadastro válido: <br>";
 echo $system->register('Ana Pereira', 'ana@email.com', 'Senha123A');
-echo "\n";
+echo "<br>";
 
-echo "Caso 2 - E-mail inválido: ";
+echo "<strong>Caso 2 - </strong>E-mail inválido: <br>";
 echo $system->register('Pedro', 'pedro@@email', 'Senha123');
-echo "\n";
+echo "<br>";
 
-echo "Caso 3 - Login senha errada: ";
+echo "<strong>Caso 3 - </strong>Login senha errada: <br>";
 echo $system->login('joao@email.com', 'Errada123');
-echo "\n";
+echo "<br>";
 
-echo "Caso 4 - Reset de senha: ";
+echo "<strong>Caso 4 - </strong>Reset de senha: <br>";
 echo $system->resetPassword(1, 'NovaSenha1');
-echo "\n";
+echo "<br>";
 
-echo "Caso 5 - E-mail duplicado: ";
+echo "<strong>Caso 5 - </strong>E-mail duplicado: <br>";
 echo $system->register('Outro', 'joao@email.com', 'Senha123');
-echo "\n";
+echo "<br>";
 
-echo "Caso 6 - Cadastro senha fraca: ";
+echo "<strong>Caso 6 - </strong>Cadastro senha fraca: <br>";
 echo $system->register('Teste', 'teste@email.com', 'senha');
-echo "\n";
+echo "<br>";
 
-echo "Caso 7 - Login usuário inexistente: ";
+echo "<strong>Caso 7 - </strong>Login usuário inexistente: <br>";
 echo $system->login('inexistente@email.com', 'Senha123');
-echo "\n";
+echo "<br>";
 
-echo "Caso 8 - Reset usuário inexistente: ";
+echo "<strong>Caso 8 - </strong>Reset usuário inexistente: <br>";
 echo $system->resetPassword(999, 'Senha1234');
-echo "\n";
+echo "<br>";
 
-echo "Caso 9 - Reset senha fraca: ";
+echo "<strong>Caso 9 - </strong>Reset senha fraca: <br>";
 echo $system->resetPassword(2, 'senha');
-echo "\n";
-
-echo "-------- FIM DOS TESTES --------\n";
+echo "<br>";
