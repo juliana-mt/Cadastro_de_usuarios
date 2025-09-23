@@ -87,5 +87,24 @@ Class UserSystem
 
         return 'Login inválido.';
     }
+
+    public function resetPassword(int $id, string $newPassword): string
+    {
+        if (!$this->isPasswordStrong($newPassword))
+        {
+            return 'Senha fraca';
+        }
+
+        foreach  ($this->users as &$user)
+        {
+            if ($user['id'] === $id){
+                $user['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
+                return 'Senha alterada com sucesso';
+
+            }
+        }
+
+        return 'Usuário não encontrado';
+    }
 }
 ?>
